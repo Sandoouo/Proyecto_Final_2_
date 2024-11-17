@@ -1,30 +1,40 @@
-import java.util.Calendar;
-import java.util.List;
 
-class MedicoCirujano extends Medico {
+
+package main;
+
+import java.util.*;
+
+public class MedicoCirujano extends Medico {
     private List<String> tiposCirugia;
 
-    public MedicoCirujano(String nombre, int numeroIdentificacion, double valorPorHora, List<String> tiposCirugia) {
-        super(nombre, numeroIdentificacion, valorPorHora);
+    // Constructor con lista de cirugías
+    public MedicoCirujano(String nombre, String numeroIdentificacion, double valorHoraConsulta, List<String> tiposCirugia) {
+        super(nombre, numeroIdentificacion, valorHoraConsulta);
         this.tiposCirugia = tiposCirugia;
-    }
-
-    @Override
-    public double calcularValorCita(int minutos) {
-        return (valorPorHora / 60) * minutos;
-    }
-
-    @Override
-    public boolean verificarDisponibilidad(Calendar fecha) {
-        for (Calendar reservada : fechasReservadas) {
-            if (reservada.equals(fecha)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public List<String> getTiposCirugia() {
         return tiposCirugia;
+    }
+
+    // Método para agregar cirugías dinámicamente
+    public void agregarCirugia(String cirugia) {
+        this.tiposCirugia.add(cirugia);
+    }
+
+    @Override
+    public double calcularValorCita(int tiempoEnMinutos) {
+        return getValorHoraConsulta() * (tiempoEnMinutos / 60.0);
+    }
+
+    @Override
+    public boolean verificarDisponibilidad(Date fecha) {
+        // Suponiendo que el cirujano solo trabaja de lunes a viernes, 8 AM - 2 PM
+        return !getFechasReservadas().contains(fecha);
+    }
+
+    @Override
+    public String toString() {
+        return "Médico Cirujano: " + getNombre() + " (Cirugías: " + String.join(", ", tiposCirugia) + ")";
     }
 }

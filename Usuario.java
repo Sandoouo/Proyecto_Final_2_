@@ -1,12 +1,18 @@
-class Usuario {
+package main;
+
+public abstract class Usuario {
     private String correo;
     private String nombre;
-    private int identificacion;
+    private String numeroIdentificacion;
+    private String claveIngreso;
+    private String tipoUsuario;  // "Administrador" o "UsuarioFinal"
 
-    public Usuario(String correo, String nombre, int identificacion) {
+    public Usuario(String correo, String nombre, String numeroIdentificacion, String claveIngreso, String tipoUsuario) {
         this.correo = correo;
         this.nombre = nombre;
-        this.identificacion = identificacion;
+        this.numeroIdentificacion = numeroIdentificacion;
+        this.claveIngreso = claveIngreso;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public String getCorreo() {
@@ -17,7 +23,17 @@ class Usuario {
         return nombre;
     }
 
-    public int getIdentificacion() {
-        return identificacion;
+    public String getNumeroIdentificacion() {
+        return numeroIdentificacion;
     }
+
+    public String getClaveIngreso() {
+        return claveIngreso;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public abstract void mostrarMenu();
 }
