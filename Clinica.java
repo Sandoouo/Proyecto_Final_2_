@@ -1,5 +1,4 @@
 
-
 package main;
 
 import java.io.*;
@@ -51,19 +50,16 @@ public class Clinica {
 
     public void cargarMedicos() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("medicos.dat"))) {
-            medicos = (List<Medico>) ois.readObject();
-        } catch (Exception e) {
-            System.out.println("No se pudo cargar la lista de médicos.");
-        }
+    medicos = (List<Medico>) ois.readObject();
     }
+    }
+    
 
     private void guardarMedicos() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("medicos.dat"))) {
-            oos.writeObject(medicos);
-        } catch (IOException e) {
-            System.out.println("Error al guardar los médicos.");
-        }
+         oos.writeObject(medicos);
     }
+    }    
 
     public List<Medico> getMedicos() {
         return medicos;

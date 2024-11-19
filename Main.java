@@ -1,3 +1,7 @@
+package main;
+
+//import model.Usuario;
+//import model.Medico;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Calendar;

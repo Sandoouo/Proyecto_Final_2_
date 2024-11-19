@@ -1,6 +1,7 @@
 package main;
 
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 public class UsuarioFinal extends Usuario {
     private Clinica clinica;
@@ -51,7 +52,8 @@ public class UsuarioFinal extends Usuario {
 
         System.out.print("Ingrese la fecha de la cita (dd/MM/yyyy): ");
         String fechaStr = sc.nextLine();
-        Date fecha = new Date(fechaStr);  // Aquí deberías convertir el string en una fecha válida
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = formato.parse(fechaStr);  // Aquí deberías convertir el string en una fecha válida
 
         // Filtrar médicos según tipo
         List<Medico> medicosDisponibles = new ArrayList<>();
