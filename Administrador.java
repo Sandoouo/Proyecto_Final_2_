@@ -8,7 +8,6 @@ public class Administrador extends Usuario {
         super(correo, nombre, numeroIdentificacion, claveIngreso, "Administrador");
     }
 
-    @Override
     public void mostrarMenu() {
         Scanner sc = new Scanner(System.in);
         Clinica clinica = new Clinica();
